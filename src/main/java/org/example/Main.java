@@ -55,6 +55,23 @@ public class Main{
 
 
 
+    public static int Hece(String x, String y) {
+        int sayac = 0;
+
+        for (int i = 0; i < x.length() - 1; i++) {
+            for (int j = 0; j < y.length() - 1; j++) {
+                if (x.charAt(i) == y.charAt(j)
+                        && x.charAt(i + 1) == y.charAt(j + 1)) {
+                    sayac++;
+                }
+            }
+        }
+
+        return sayac;
+    }
+
+
+
 
 
     public static void main(String[] args){
@@ -69,9 +86,12 @@ public class Main{
 
 
 
+        int uzunluk = Math.max(input1.length(), input2.length());
+
         yuzde = (eslesenHarfSayisi(input1, input2)
-                + harfLokasyonlari(input1, input2))
-                * 100.0 / (Math.max(input1.length(), input2.length()) * 2);
+                + harfLokasyonlari(input1, input2)
+                + Hece(input1, input2))
+                * 100.0 / (uzunluk * 3 - 1);
 
         System.out.println(yuzde);
 
